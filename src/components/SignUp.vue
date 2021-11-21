@@ -37,9 +37,9 @@
             v-model="password"
             :rules="required"
             label="Password *"
-            :append-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
-            :type="visible ? 'text' : 'password'"
-            @click:append="visible = !visible"
+            :append-icon="visiblePassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="visiblePassword ? 'text' : 'password'"
+            @click:append="visiblePassword = !visiblePassword"
           ></v-text-field>
 
           <!-- Confirm Password Field -->
@@ -50,9 +50,9 @@
             v-model="confirmPassword"
             :rules="required"
             label="Confirm Password *"
-            :append-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
-            :type="visible ? 'text' : 'password'"
-            @click:append="visible = !visible"
+            :append-icon="visibleConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="visibleConfirmPassword ? 'text' : 'password'"
+            @click:append="visibleConfirmPassword = !visibleConfirmPassword"
             @keydown.enter="signup()"
           ></v-text-field>
           <!-- Sign up button -->
@@ -89,7 +89,8 @@ export default {
       email: null, // Store the email
       password: null, // Store the password
       confirmPassword: null, // Store the confirm password
-      visible: false, // Visibility to show or hide the password
+      visiblePassword: false, // Visibility to show or hide the password
+      visibleConfirmPassword: false, // Visibility to show or hide the password
       valid: true, // Binds the signup form
       emailRules: emailRules, // Check the email validations
       required: required, // Check the password validations
