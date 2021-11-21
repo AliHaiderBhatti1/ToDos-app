@@ -60,12 +60,12 @@
             width="60%"
             class="
               title
-              btn-success
+              bg-green-400
               mx-auto
               my-1
               text-capitalize
               mt-5
-              white--text
+              text-white
               align-center
               d-flex
             "
@@ -121,7 +121,7 @@ export default {
   methods: {
     // Action dispatchesa in store to register user
     signup() {
-      this.snackbar = false
+      this.snackbar = false;
       // Taks 3 arguments (email, password, confirm password)
       if (this.email && this.password && this.confirmPassword) {
         this.$store
@@ -133,18 +133,14 @@ export default {
           .then(() => {
             // Routes to login screen
             this.$router.push({ name: "login" });
-          }).catch((err) => {
+          })
+          .catch((err) => {
             this.snackbar = true;
-            this.error = true
-            this.snackbarMessage = err.response.data.error[0]
+            this.error = true;
+            this.snackbarMessage = err.response.data.error[0];
           });
       }
     },
   },
 };
 </script>
-<style scoped>
-.btn-success {
-  background-color: #1cc283 !important;
-}
-</style>

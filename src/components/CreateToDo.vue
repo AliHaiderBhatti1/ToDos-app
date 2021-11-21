@@ -8,10 +8,10 @@
       width="500"
     >
       <v-card tile class="white" height="420" width="500">
-        <v-card-title class="header-text-color">Create To Do</v-card-title>
+        <v-card-title class="text-indigo-800">Create To Do</v-card-title>
         <hr />
         <div class="ma-4">
-          <label class="header-text-color">Title:</label>
+          <label class="text-indigo-800">Title:</label>
           <!-- Text field for title -->
           <div style="width: 300px">
             <v-text-field
@@ -23,7 +23,7 @@
               hide-details
             ></v-text-field>
           </div>
-          <label class="header-text-color">Description:</label>
+          <label class="text-indigo-800">Description:</label>
           <div style="width: 300px">
             <!-- text area for description -->
             <v-textarea
@@ -32,10 +32,10 @@
               v-model="description"
             ></v-textarea>
           </div>
-          <v-btn class="btn-success white--text" @click="createTodo()"
+          <v-btn class="bg-green-400 text-white" @click="createTodo()"
             >Save</v-btn
           >
-          <v-btn class="btn-cancel white--text mx-6" @click="modal = false"
+          <v-btn class="bg-indigo-300 text-white mx-6" @click="modal = false"
             >Cancel</v-btn
           >
         </div>
@@ -125,14 +125,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.btn-success {
-  background-color: #1cc283 !important;
-}
-.btn-cancel {
-  background-color: rgb(48, 129, 204) !important;
-}
-.header-text-color {
-  color: #2a206a !important;
-}
-</style>

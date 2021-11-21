@@ -1,0 +1,16 @@
+.text-indigo-800 {
+  --tw-text-opacity: 1;
+  color: rgba(55, 48, 163, var(--tw-text-opacity));
+}
+.text-white {
+  --tw-text-opacity: 1 !important;
+  color: rgba(255, 255, 255, var(--tw-text-opacity)) !important;
+}
+.bg-green-400 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgba(52, 211, 153, var(--tw-bg-opacity)) !important;
+}
+.bg-indigo-300 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgba(165, 180, 252, var(--tw-bg-opacity)) !important;
+}

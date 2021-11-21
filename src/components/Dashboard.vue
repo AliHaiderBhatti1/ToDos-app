@@ -1,10 +1,10 @@
 <!-- This component is used to display list of 'to dos' -->
 <template>
   <div>
-    <h1 class="d-flex justify-center header-text-color">To Do List</h1>
+    <h1 class="d-flex justify-center text-indigo-800">To Do List</h1>
     <div class="d-flex justify-end mx-3">
       <!-- Button to open modal for to do -->
-      <v-btn class="mx-3 btn-success white--text" @click="createDialog = true"
+      <v-btn class="mx-3 bg-green-400 text-white" @click="createDialog = true"
         >+ Create To Do</v-btn
       >
       <v-tooltip color="#302277">
@@ -20,7 +20,7 @@
     <!-- DataTable renders the lsi of to dos -->
     <div class="px-3 my-4">
       <!-- Headers -->
-      <v-row class="bg-theme-light mb-2">
+      <v-row class="bg-indigo-300 text-white mb-2">
         <v-col cols="1">ID</v-col>
         <v-col cols="3">TITLE</v-col>
         <v-col cols="6">DESCRIPTION</v-col>
@@ -70,14 +70,16 @@
           <v-col cols="2">
             <v-icon
               @click="editToDo(item)"
-              class="mx-1 header-text-color"
+              class="mx-1"
+              color="#2a206a"
               small
             >
               mdi-pencil
             </v-icon>
             <v-icon
               @click="deleteToDo(item)"
-              class="mx-1 header-text-color"
+              class="mx-1"
+              color="#2a206a"
               small
               >mdi-trash-can-outline</v-icon
             >
@@ -188,38 +190,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.header-text-color {
-  color: #2a206a !important;
-}
-.light-purple-bg {
-  background-color: #968ccc !important;
-}
-.bg-white {
-  background-color: white !important;
-}
-.btn-success {
-  background-color: #1cc283 !important;
-}
-.sub-header {
-  position: relative;
-  margin: 0 auto;
-}
-.inputContainer i {
-  position: absolute;
-}
-.header-search-input-field {
-  border: 1px #dad6f5 solid;
-  border-radius: 2px;
-  height: 22px;
-  font-weight: lighter;
-  padding-left: 20px;
-}
-.header-search-input-field::placeholder {
-  color: grey !important;
-  font-size: 13px;
-}
-.inp-width {
-  width: 110px !important;
-}
-</style>

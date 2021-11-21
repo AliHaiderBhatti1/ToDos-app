@@ -8,11 +8,11 @@
       width="500"
     >
       <v-card tile class="white" height="420" width="500">
-        <v-card-title class="header-text-color">Update To Do</v-card-title>
+        <v-card-title class="text-indigo-800">Update To Do</v-card-title>
         <hr />
         <div v-if="toDoObject" class="ma-4">
-          <label class="header-text-color">Title:</label>
-          <div style="width:300px">
+          <label class="text-indigo-800">Title:</label>
+          <div style="width: 300px">
             <v-text-field
               color="purple darken-2"
               autofocus
@@ -22,18 +22,18 @@
               hide-details
             ></v-text-field>
           </div>
-          <label class="header-text-color">Description:</label>
-          <div style="width:300px">
+          <label class="text-indigo-800">Description:</label>
+          <div style="width: 300px">
             <v-textarea
               color="purple darken-2"
               outlined
               v-model="toDoObject.description"
             ></v-textarea>
           </div>
-          <v-btn class="btn-success white--text" @click="updateToDo"
+          <v-btn class="bg-green-400 text-white" @click="updateToDo"
             >Save</v-btn
           >
-          <v-btn class="btn-cancel white--text mx-6" @click="modal = false"
+          <v-btn class="bg-indigo-300 text-white mx-6" @click="modal = false"
             >Cancel</v-btn
           >
         </div>
@@ -114,14 +114,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.btn-success {
-  background-color: #1cc283 !important;
-}
-.btn-cancel {
-  background-color: rgb(48, 129, 204) !important;
-}
-.header-text-color {
-  color: #2a206a !important;
-}
-</style>

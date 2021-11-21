@@ -50,12 +50,12 @@
             width="60%"
             class="
               title
-              btn-success
+              bg-green-400
               mx-auto
               my-1
               text-capitalize
               mt-5
-              white--text
+              text-white
               align-center
               d-flex
             "
@@ -108,7 +108,7 @@ export default {
   methods: {
     // Action dsipatches in store to hit Login API
     login() {
-      const timer = 1000
+      const timer = 1000;
       if (this.email && this.password) {
         // Takes to arguments (email, password)
         this.$store
@@ -139,8 +139,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.btn-success {
-  background-color: #1cc283 !important;
-}
-</style>

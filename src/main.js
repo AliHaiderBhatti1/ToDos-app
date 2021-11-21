@@ -7,7 +7,8 @@ import axios from "axios";
 import "vuetify/dist/vuetify.min.css";
 import vuetify from "./plugins/vuetify";
 import infiniteScroll from "vue-infinite-scroll";
-import "@/assets/styles/style.css";
+import "@/assets/tailwind/tailwind.css";
+import "@/assets/tailwind/index.css"
 
 Vue.config.productionTip = false;
 Vue.use(Vuetify);
