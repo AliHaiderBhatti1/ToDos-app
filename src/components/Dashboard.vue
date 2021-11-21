@@ -154,7 +154,6 @@ export default {
       const { currentPage } = this.getPagination;
       this.loader = true;
       this.fetchToDos(currentPage + 1).then(() => {
-        console.log("ok");
         this.loader = false;
         this.busy = false;
       });

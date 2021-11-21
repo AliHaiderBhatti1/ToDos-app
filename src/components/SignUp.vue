@@ -14,8 +14,7 @@
           ref="form"
           v-model="valid"
           lazy-validation
-          class="mb-16 form mx-8
-          "
+          class="mb-16 form mx-8"
           autocomplete="off"
         >
           <!-- email Input Field -->
@@ -59,7 +58,17 @@
           <v-btn
             id="login-btn"
             width="60%"
-            class="title btn-success mx-auto my-1 text-capitalize mt-5 white--text align-center d-flex"
+            class="
+              title
+              btn-success
+              mx-auto
+              my-1
+              text-capitalize
+              mt-5
+              white--text
+              align-center
+              d-flex
+            "
             @click="signup"
           >
             Sign Up
@@ -79,11 +88,21 @@
         </v-form>
       </v-card-text>
     </v-card>
+    <Snackbar
+      :snackbar="snackbar"
+      :snackbarMessage="snackbarMessage"
+      :error="error"
+      @close="snackbar = false"
+    />
   </div>
 </template>
 <script>
 import { emailRules, required } from "../validations/validations.js";
+import Snackbar from "@/components/Snackbar.vue";
 export default {
+  components: {
+    Snackbar,
+  },
   data() {
     return {
       email: null, // Store the email
@@ -94,25 +113,31 @@ export default {
       valid: true, // Binds the signup form
       emailRules: emailRules, // Check the email validations
       required: required, // Check the password validations
+      snackbarMessage: "",
+      snackbar: false,
+      error: false,
     };
   },
   methods: {
     // Action dispatchesa in store to register user
     signup() {
+      this.snackbar = false
       // Taks 3 arguments (email, password, confirm password)
       if (this.email && this.password && this.confirmPassword) {
-        if (this.password == this.confirmPassword) {
-          this.$store
-            .dispatch("signup", {
-              email: this.email,
-              password: this.password,
-              password_confirmation: this.confirmPassword,
-            })
-            .then(() => {
-              // Routes to login screen
-              this.$router.push({ name: "login" });
-            });
-        }
+        this.$store
+          .dispatch("signup", {
+            email: this.email,
+            password: this.password,
+            password_confirmation: this.confirmPassword,
+          })
+          .then(() => {
+            // Routes to login screen
+            this.$router.push({ name: "login" });
+          }).catch((err) => {
+            this.snackbar = true;
+            this.error = true
+            this.snackbarMessage = err.response.data.error[0]
+          });
       }
     },
   },
