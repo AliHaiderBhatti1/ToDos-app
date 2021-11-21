@@ -16,8 +16,7 @@
           ref="form"
           v-model="valid"
           lazy-validation
-          class="mb-16 form mx-8
-          "
+          class="mb-16 form mx-8"
           autocomplete="off"
         >
           <!-- email Input Field -->
@@ -49,7 +48,17 @@
           <v-btn
             id="login-btn"
             width="60%"
-            class="title btn-success mx-auto my-1 text-capitalize mt-5 white--text align-center d-flex"
+            class="
+              title
+              btn-success
+              mx-auto
+              my-1
+              text-capitalize
+              mt-5
+              white--text
+              align-center
+              d-flex
+            "
             @click="login"
           >
             Login
@@ -68,11 +77,21 @@
         </v-form>
       </v-card-text>
     </v-card>
+    <Snackbar
+      :snackbar="snackbar"
+      :snackbarMessage="snackbarMessage"
+      :error="error"
+      @close="snackbar = false"
+    />
   </div>
 </template>
 <script>
 import { emailRules, required } from "../validations/validations.js";
+import Snackbar from "@/components/Snackbar.vue";
 export default {
+  components: {
+    Snackbar,
+  },
   data() {
     return {
       email: null, // Store the email
@@ -81,11 +100,15 @@ export default {
       valid: true, // Binds the login form
       emailRules: emailRules, // Check the email validations
       required: required, // Check the password validations
+      snackbarMessage: "",
+      snackbar: false,
+      error: false,
     };
   },
   methods: {
     // Action dsipatches in store to hit Login API
     login() {
+      const timer = 1000
       if (this.email && this.password) {
         // Takes to arguments (email, password)
         this.$store
@@ -94,9 +117,22 @@ export default {
             password: this.password,
           })
           .then(() => {
+            this.error = false;
+            this.snackbarMessage = "Login Successfully!";
+            // changes to route to fetchingList screen
+            setTimeout(() => {
+              this.$router.push({
+                name: "to-do-list",
+              });
+            }, timer);
           })
           // Used to display error message
-          .catch(() => {
+          .catch((err) => {
+            this.error = true;
+            this.snackbarMessage = err.response.data.message;
+          })
+          .finally(() => {
+            this.snackbar = true;
           });
       }
     },

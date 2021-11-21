@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Login from "../components/Login.vue"
 import SignUp from "../components/SignUp.vue"
+import To_Do_List from '../components/Dashboard.vue'
+import NotFound from '../components/404.vue'
 
 
 Vue.use(VueRouter);
@@ -25,6 +27,18 @@ const router = new VueRouter({
             name: "signup",
             meta: { title: "Sign Up",  requireAuth: false },
             component:SignUp,
+          },
+          {
+            path: "/to-do-list",
+            name: "to-do-list",
+            meta: { title: "To Do List" , requireAuth: true},
+            component: To_Do_List,
+          },
+          {
+            path: "/*",
+            name: "404",
+            meta: { title: "NotFound" },
+            component: NotFound,
           },
     ]
 })
